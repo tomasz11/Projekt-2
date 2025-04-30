@@ -1,0 +1,691 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <future>
+#include <string>
+
+struct Gra {
+	std::string gracz1;
+	std::string gracz2;
+	int punkty_gracz1=26;
+	int punkty_gracz2=26;
+
+
+};
+void asynchroniczne_tasowanie(std::vector<int>& talia1, std::vector<int>& talia2) {
+	//std::vector<int> talia1;
+	//std::vector<int> talia2;
+	int dwa = 0, trzy = 0, cztery = 0, piec = 0, szesc = 0, siedem = 0, osiem = 0, dziewiec = 0, dziesiec = 0, jedenascie = 0, dwanascie = 0, trzynascie = 0, czternascie = 0;
+	int ilosc_kart = 0;
+	int ilosc_kart_w_1_talii = 0;
+	int ilosc_kart_w_2_talii = 0;
+	srand(time(NULL));
+
+	int tablica_z_kartami[] = {2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14};
+	while (ilosc_kart < 52) {
+		int numer_karty_z_tablicy = std::rand() % 51;
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 2) {
+			if (dwa < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					dwa++;
+
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					dwa++;
+					
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 3) {
+			if (trzy < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					trzy++;
+
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					trzy++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 4) {
+			if (cztery < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+
+					cztery++;
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					cztery++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 5) {
+			if (piec < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					piec++;
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					piec++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 6) {
+			if (szesc < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					szesc++;
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					szesc++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 7) {
+			if (siedem < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					siedem++;
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					siedem++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 8) {
+			if (osiem < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					osiem++;
+
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					osiem++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 9) {
+			if (dziewiec < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					dziewiec++;
+
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					dziewiec++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 10) {
+			if (dziesiec < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+
+					dziesiec++;
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					dziesiec++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 11) {
+			if (jedenascie < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					jedenascie++;
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					jedenascie++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 12) {
+			if (dwanascie < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					dwanascie++;
+
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					dwanascie++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 13) {
+			if (trzynascie < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+					trzynascie++;
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					trzynascie++;
+
+				}
+			}
+
+		}
+		if (tablica_z_kartami[numer_karty_z_tablicy] == 14) {
+			if (czternascie < 4) {
+				if (ilosc_kart_w_1_talii < 26) {
+					talia1.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_1_talii++;
+					ilosc_kart++;
+
+					czternascie++;
+
+				}
+				if (ilosc_kart_w_1_talii >= 26) {
+					talia2.push_back(tablica_z_kartami[numer_karty_z_tablicy]);
+					ilosc_kart_w_2_talii++;
+					ilosc_kart++;
+					czternascie++;
+
+				}
+			}
+
+		}
+	
+
+
+	}
+
+	int ile = 0;
+	std::cout << " talia 1" << std::endl;
+
+	for (int i = 0; i < 26; i++) {
+		std::cout << ile << ". " << talia1[i] << " " << ile << ". " << talia2[i] << std::endl;
+
+		ile++;
+
+	}
+}
+void kolejka_kart(std::vector<int>& talia1, std::vector<int>& talia2, std::queue<int>& kolejka1, std::queue<int>& kolejka2) {
+
+	for (int i = 0; i < 26; i++) {
+		int karta = talia1[i];
+		kolejka1.push(karta);
+		int karta2 = talia2[i];
+		kolejka2.push(karta2);
+	}
+
+}
+
+
+
+
+
+
+
+char wyswietl_poprawnie_karty(int x) {
+	if (x == 2) {
+		return '2';
+	}
+	if (x == 3) {
+		return '3';
+	}
+	if (x == 4) {
+		return '4';
+	}
+	if (x == 5) {
+		return '5';
+	}
+	if (x == 6) {
+		return '6';
+	}
+	if (x == 7) {
+		return '7';
+	}
+	if (x == 8) {
+		return '8';
+	}
+	if (x == 9) {
+		return '9';
+	}
+	if (x == 10) {
+		return 'X';
+	}
+	if (x == 11) {
+		return 'J';
+	}
+	if (x == 12) {
+		return 'D';
+	}
+	if (x == 13) {
+		return 'K';
+	}
+	if (x == 14) {
+		return 'A';
+	}
+
+
+}
+
+
+
+
+
+
+
+void gra(std::queue<int>& kolejka1, std::queue<int>& kolejka2, Gra& game) {
+	int liczba_starc = 1;
+	game.punkty_gracz1 = 26;
+	game.punkty_gracz2 = 26;
+	int ile_wojen = 0;
+	while (!kolejka1.empty() or !kolejka2.empty()) {
+		std::cout << "Runda:  " << liczba_starc << std::endl;
+		std::cout << "karta gracza " << game.gracz1 << ": " << wyswietl_poprawnie_karty(kolejka1.front()) << " VS " << "karta gracza " << game.gracz2 << ": " << wyswietl_poprawnie_karty(kolejka2.front()) << std::endl;
+		if (kolejka1.front() == kolejka2.front()) {
+			std::vector<int> zastepczy;
+			while (kolejka1.front() == kolejka2.front()) {
+
+				std::cout << "     WOJNA! " << std::endl;
+				zastepczy.push_back(kolejka1.front());
+				zastepczy.push_back(kolejka2.front());
+				kolejka1.pop();
+				kolejka2.pop();
+				zastepczy.push_back(kolejka1.front());
+				zastepczy.push_back(kolejka2.front());
+				kolejka1.pop();
+				kolejka2.pop();
+				zastepczy.push_back(kolejka1.front());
+				zastepczy.push_back(kolejka2.front());
+				std::cout << "karta gracza " << game.gracz1 << ": " << wyswietl_poprawnie_karty(kolejka1.front()) << " VS " << "karta gracza " << game.gracz2 << ": " << wyswietl_poprawnie_karty(kolejka2.front()) << std::endl;
+
+				ile_wojen++;
+			}
+			if (kolejka1.front() > kolejka2.front()) {
+				std::cout << "Wygrana gracza 1" << std::endl;
+				for (int i = 0; i < zastepczy.size(); i++) {
+					kolejka1.push(zastepczy[i]);
+
+				}
+				int dodawanie_pkt_wojna = 1;
+				game.punkty_gracz1 = game.punkty_gracz1 + 3;
+				game.punkty_gracz2 = game.punkty_gracz2 - 3;
+				if (ile_wojen > 1) {
+					while (dodawanie_pkt_wojna < ile_wojen) {
+						game.punkty_gracz1 = game.punkty_gracz1 + 2;
+						game.punkty_gracz2 = game.punkty_gracz2 - 2;
+						dodawanie_pkt_wojna++;
+					}
+				}
+			}
+			if (kolejka1.front() < kolejka2.front()) {
+				std::cout << "Wygrana gracza 2" << std::endl;
+
+				for (int i = 0; i < zastepczy.size(); i++) {
+					kolejka2.push(zastepczy[i]);
+				}
+				int dodawanie_pkt_wojna = 1;
+				game.punkty_gracz2 = game.punkty_gracz2 + 3;
+				game.punkty_gracz1 = game.punkty_gracz1 - 3;
+				if (ile_wojen > 1) {
+					while (dodawanie_pkt_wojna < ile_wojen) {
+						game.punkty_gracz2 = game.punkty_gracz2 + 2;
+						game.punkty_gracz1 = game.punkty_gracz1 - 2;
+						dodawanie_pkt_wojna++;
+					}
+				}
+			}
+			ile_wojen = 0;
+		}
+		else if (kolejka1.front() < kolejka2.front()) {
+			std::cout << "Wygrywa gracz 2" << std::endl;
+			kolejka2.push(kolejka1.front());
+			kolejka2.push(kolejka2.front());
+			game.punkty_gracz2 = game.punkty_gracz2 + 1;
+			game.punkty_gracz1 = game.punkty_gracz1 - 1;
+
+		}
+		else if (kolejka1.front() > kolejka2.front()) {
+			std::cout << "Wygrywa gracz 1" << std::endl;
+			kolejka1.push(kolejka1.front());
+			kolejka1.push(kolejka2.front());
+			game.punkty_gracz1 = game.punkty_gracz1 + 1;
+			game.punkty_gracz2 = game.punkty_gracz2 - 1;
+		}
+
+
+
+		kolejka1.pop();
+		kolejka2.pop();
+		char pytanie3;
+		std::cout << "Ilosc kart w talii gracza " << game.gracz1 << ": " << game.punkty_gracz1 << " Ilosc kart w talii gracza " << game.gracz2 << ": " << game.punkty_gracz2 << std::endl;
+
+
+		std::cout << std::endl;
+
+		std::cout << "Czy chcesz kontynuowac? Jesli nie wcisnij 'L' " << std::endl;
+		std::cin >> pytanie3;
+		if (pytanie3 == 'L')
+			break;
+
+		liczba_starc++;
+		std::cout << std::endl;
+	}
+	if (game.punkty_gracz1 > game.punkty_gracz2) {
+		std::cout << "WYGRANA GRACZA: " << game.gracz1 << std::endl;
+	}
+	else if (game.punkty_gracz1 < game.punkty_gracz2) {
+		std::cout << "WYGRANA GRACZA: " << game.gracz2 << std::endl;
+	}
+
+}
+
+
+
+
+void gra2(std::queue<int>& kolejka1, std::queue<int>& kolejka2, Gra& game) {
+	int liczba_starc = 1;
+	game.punkty_gracz1 = 26;
+	game.punkty_gracz2 = 26;
+	int ile_wojen = 0;
+	while (liczba_starc < 31) {
+		std::cout << "Runda:  " << liczba_starc << std::endl;
+		std::cout << "karta gracza " << game.gracz1 << ": " << wyswietl_poprawnie_karty(kolejka1.front()) << " VS " << "karta gracza " << game.gracz2 << ": " << wyswietl_poprawnie_karty(kolejka2.front()) << std::endl;
+		if (kolejka1.front() == kolejka2.front()) {
+			std::vector<int> zastepczy;
+			while (kolejka1.front() == kolejka2.front()) {
+
+				std::cout << "     WOJNA! " << std::endl;
+				zastepczy.push_back(kolejka1.front());
+				zastepczy.push_back(kolejka2.front());
+				kolejka1.pop();
+				kolejka2.pop();
+				zastepczy.push_back(kolejka1.front());
+				zastepczy.push_back(kolejka2.front());
+				kolejka1.pop();
+				kolejka2.pop();
+				zastepczy.push_back(kolejka1.front());
+				zastepczy.push_back(kolejka2.front());
+				std::cout << "karta gracza " << game.gracz1 << ": " << wyswietl_poprawnie_karty(kolejka1.front()) << " VS " << "karta gracza " << game.gracz2 << ": " << wyswietl_poprawnie_karty(kolejka2.front()) << std::endl;
+
+				ile_wojen++;
+			}
+			if (kolejka1.front() > kolejka2.front()) {
+				std::cout << "Wygrana gracza 1" << std::endl;
+				for (int i = 0; i < zastepczy.size(); i++) {
+					kolejka1.push(zastepczy[i]);
+
+				}
+				int dodawanie_pkt_wojna = 1;
+				game.punkty_gracz1 = game.punkty_gracz1 + 3;
+				game.punkty_gracz2 = game.punkty_gracz2 - 3;
+				if (ile_wojen > 1) {
+					while (dodawanie_pkt_wojna < ile_wojen) {
+						game.punkty_gracz1 = game.punkty_gracz1 + 2;
+						game.punkty_gracz2 = game.punkty_gracz2 - 2;
+						dodawanie_pkt_wojna++;
+					}
+				}
+			}
+			if (kolejka1.front() < kolejka2.front()) {
+				std::cout << "Wygrana gracza 2" << std::endl;
+
+				for (int i = 0; i < zastepczy.size(); i++) {
+					kolejka2.push(zastepczy[i]);
+				}
+				int dodawanie_pkt_wojna = 1;
+				game.punkty_gracz2 = game.punkty_gracz2 + 3;
+				game.punkty_gracz1 = game.punkty_gracz1 - 3;
+				if (ile_wojen > 1) {
+					while (dodawanie_pkt_wojna < ile_wojen) {
+						game.punkty_gracz2 = game.punkty_gracz2 + 2;
+						game.punkty_gracz1 = game.punkty_gracz1 - 2;
+						dodawanie_pkt_wojna++;
+					}
+				}
+			}
+			ile_wojen = 0;
+		}
+		else if (kolejka1.front() < kolejka2.front()) {
+			std::cout << "Wygrywa gracz 2" << std::endl;
+			kolejka2.push(kolejka1.front());
+			kolejka2.push(kolejka2.front());
+			game.punkty_gracz2 = game.punkty_gracz2 + 1;
+			game.punkty_gracz1 = game.punkty_gracz1 - 1;
+			kolejka1.pop();
+			kolejka2.pop();
+
+		}
+		else if (kolejka1.front() > kolejka2.front()) {
+			std::cout << "Wygrywa gracz 1" << std::endl;
+			kolejka1.push(kolejka1.front());
+			kolejka1.push(kolejka2.front());
+			game.punkty_gracz1 = game.punkty_gracz1 + 1;
+			game.punkty_gracz2 = game.punkty_gracz2 - 1;
+			kolejka1.pop();
+			kolejka2.pop();
+		}
+
+
+
+		//kolejka1.pop();
+		//kolejka2.pop();
+		char pytanie3;
+		std::cout << "Ilosc kart w talii gracza " << game.gracz1 << ": " << game.punkty_gracz1 << " Ilosc kart w talii gracza " << game.gracz2 << ": " << game.punkty_gracz2 << std::endl;
+
+
+		std::cout << std::endl;
+
+		std::cout << "Czy chcesz kontynuowac? Jesli nie wcisnij 'L' " << std::endl;
+		std::cin >> pytanie3;
+		if (pytanie3 == 'L')
+			break;
+		
+		liczba_starc++;
+		std::cout << std::endl;
+
+	//	std::cout << "TEST" << std::endl;
+	//	for (int i = 0; i < 26; i++) {
+	//		std::cout << kolejka1.front() << std::endl;
+	//		kolejka1.pop();
+	//	}
+	//	std::cout << std::endl;
+
+
+	}
+	if (game.punkty_gracz1 > game.punkty_gracz2) {
+		std::cout << "WYGRANA GRACZA: " << game.gracz1 << std::endl;
+		}
+	else if (game.punkty_gracz1 < game.punkty_gracz2) {
+		std::cout << "WYGRANA GRACZA: " << game.gracz2 << std::endl;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+int main() {
+	std::vector<int> talia1;
+	std::vector<int> talia2;
+	std::queue<int> kolejka1;
+	std::queue<int> kolejka2;
+	Gra Gra1;
+	char przycisk;
+	char wybor_trybu_gry;
+	std::cout << "Witamy w grze Wojna! Wybierz tryb gry: " << std::endl;
+	std::cout << "1. Do ostatniej karty. " << std::endl;
+	std::cout << "2. Do 30 starc. " << std::endl;
+	std::cin >> wybor_trybu_gry;
+	std::cout << "Podaj nazwe gracza 1 " << std::endl;
+	std::cin >> Gra1.gracz1;
+	std::cout << "Podaj nazwe gracza 2 " << std::endl;
+	std::cin >> Gra1.gracz2;
+
+
+	if (wybor_trybu_gry == '1') {
+		std::cout << "Nacisnij Q aby rozpoczac gre i potasowac karty" << std::endl;
+		std::cin >> przycisk;
+		if (przycisk == 'Q') {
+
+
+
+			std::future<void> tasuj = std::async(std::launch::async, asynchroniczne_tasowanie, std::ref(talia1), std::ref(talia2));
+
+			tasuj.get();
+			kolejka_kart(talia1, talia2, kolejka1, kolejka2);
+			gra(kolejka1, kolejka2, Gra1);
+			system("pause");
+
+		}
+		else {
+			char przycisk2;
+			std::cout << "Czy chcesz zakonczyc gre? Jesli tak nacisnij 'L' , inny przycisk spowoduje wlaczenie gry." << std::endl;
+			std::cin >> przycisk2;
+			if (przycisk2 != 'L') {
+				std::future<void> tasuj = std::async(std::launch::async, asynchroniczne_tasowanie, std::ref(talia1), std::ref(talia2));
+
+				tasuj.get();
+				kolejka_kart(talia1, talia2, kolejka1, kolejka2);
+				gra(kolejka1, kolejka2, Gra1);
+
+				system("pause");
+			}
+
+		}
+	}
+	if (wybor_trybu_gry == '2') {
+
+		std::cout << "Nacisnij Q aby rozpoczac gre i potasowac karty" << std::endl;
+		std::cin >> przycisk;
+		if (przycisk == 'Q') {
+
+
+
+			std::future<void> tasuj = std::async(std::launch::async, asynchroniczne_tasowanie, std::ref(talia1), std::ref(talia2));
+
+			tasuj.get();
+			kolejka_kart(talia1, talia2, kolejka1, kolejka2);
+			gra2(kolejka1, kolejka2, Gra1);
+			system("pause");
+
+		}
+		else {
+			char przycisk2;
+			std::cout << "Czy chcesz zakonczyc gre? Jesli tak nacisnij 'L' , inny przycisk spowoduje wlaczenie gry." << std::endl;
+			std::cin >> przycisk2;
+			if (przycisk2 != 'L') {
+				std::future<void> tasuj = std::async(std::launch::async, asynchroniczne_tasowanie, std::ref(talia1), std::ref(talia2));
+
+				tasuj.get();
+				kolejka_kart(talia1, talia2, kolejka1, kolejka2);
+				gra2(kolejka1, kolejka2, Gra1);
+
+				system("pause");
+			}
+
+		}
+
+
+
+
+
+
+	}
+	return 0;
+}
